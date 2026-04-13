@@ -1,0 +1,147 @@
+{
+  "info": {
+    "name": "API-PROVA",
+    "_postman_id": "api-prova-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Usuario",
+      "item": [
+        {
+          "name": "Listar usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/usuario",
+              "host": ["{{baseUrl}}"],
+              "path": ["usuario"]
+            }
+          }
+        },
+        {
+          "name": "Buscar usuario por ID (path)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/usuario/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["usuario", "1"]
+            }
+          }
+        },
+        {
+          "name": "Buscar usuario por ID (query)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/usuario/buscarid?id=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["usuario", "buscarid"],
+              "query": [
+                { "key": "id", "value": "1" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Cadastrar usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/usuario",
+              "host": ["{{baseUrl}}"],
+              "path": ["usuario"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João da Silva\",\n  \"senha\": \"123456\",\n  \"autorizacoes\": [\n    { \"id\": 1 }\n  ]\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Autorizacao",
+      "item": [
+        {
+          "name": "Listar autorizacoes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/autorizacao",
+              "host": ["{{baseUrl}}"],
+              "path": ["autorizacao"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trabalho",
+      "item": [
+        {
+          "name": "Listar trabalhos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/trabalho",
+              "host": ["{{baseUrl}}"],
+              "path": ["trabalho"]
+            }
+          }
+        },
+        {
+          "name": "Cadastrar trabalho",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/trabalho",
+              "host": ["{{baseUrl}}"],
+              "path": ["trabalho"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Trabalho de Spring\",\n  \"dataHoraEntrega\": \"2026-04-30T18:00:00\",\n  \"descricao\": \"Entrega do laboratorio\",\n  \"nota\": 10,\n  \"autor\": {\n    \"id\": 1\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Buscar trabalho por titulo e autor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/trabalho/buscar?titulo=Trabalho de Spring&autor=João da Silva",
+              "host": ["{{baseUrl}}"],
+              "path": ["trabalho", "buscar"],
+              "query": [
+                { "key": "titulo", "value": "Trabalho de Spring" },
+                { "key": "autor", "value": "João da Silva" }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
